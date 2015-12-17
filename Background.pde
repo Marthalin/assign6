@@ -33,6 +33,13 @@ class Background{
 			else {
 				image(start2, 0, 0);
 			}
+      if(mouseX > 205 && mouseX <455){
+        if(mouseY >380 && mouseY <415){
+          image(start1,0,0);
+            if(mousePressed)
+              state = GameState.PLAYING;
+        }
+      }
 		}
 		else if (state == GameState.PLAYING) {
 			playingBg1x++;
@@ -56,6 +63,16 @@ class Background{
 			else {
 				image(end2, 0, 0);
 			}
+    if(mouseX > 200 && mouseX <440 && mouseY >300 && mouseY < 360){
+      if(mousePressed){
+        state = GameState.PLAYING;
+        fighter.hp = 20;
+        fighter.x = 580;
+        fighter.y = 240;
+      }else{
+        image(end1,0,0);
+      }
+    }
 		}
 	}
 
