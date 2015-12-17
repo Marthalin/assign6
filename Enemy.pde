@@ -3,6 +3,8 @@ class Enemy{
 	int y = 0;
 	int type;
 	int speed = 5;
+  int life;
+  int loss;
 
 	PImage enemyImg;
 	Enemy(int x, int y, int type) {
@@ -10,6 +12,8 @@ class Enemy{
 		this.y = y;
 		this.type = type;
 		enemyImg = loadImage("img/enemy.png");
+          life = 1;
+          loss = 20;
 		
 	}
 	void move() {
@@ -23,13 +27,31 @@ class Enemy{
 
 	boolean isCollideWithFighter()
 	{
-		return false;
+    if (isHit(this.x, this.y, this.enemyImg.width, this.enemyImg.height, fighter.x, fighter.y, fighter.fighterImg.width, fighter.fighterImg.height)){
+    return true;
+    }else {
+    return false;
+    }
 	}
+
+  boolean isCollideWithBullet(int i)
+  {
+    if (bullet[i]!=null && isHit(this.x, this.y, this.enemyImg.width, this.enemyImg.height, bullet[i].x, bullet[i].y, 27, 31)==true) {
+      
+      return true;
+    } else { 
+      return false;
+    }
+  }
 
 	boolean isOutOfBorder()
 	{
-		return false;
-	}
+  if (this.x > width){
+      return true;
+      }else{
+      return false;
+    }
+  }
 
 
 }
@@ -100,6 +122,7 @@ void addDiamondEnemy()
 void addEnemyStrong()
 {
 	for (int i = 0; i < 5; ++i) {
-		enemys[i] = new Enemy(0, 40+ i * 85, FlightType.ENEMYSTRONG);
+    wait=7000;
+    enemys[i] = new Boss(-80, 40+ i * 85);
 	}
 }
