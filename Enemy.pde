@@ -126,4 +126,4 @@ void addEnemyStrong()
     enemys[i] = new Boss(-80, 40+ i * 85);
 	}
 }
-}
+
